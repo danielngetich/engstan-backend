@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_04_052503) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_04_093027) do
+  create_table "categories", force: :cascade do |t|
+    t.string "printing_branding"
+    t.string "general_clothing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "imageurl"
+    t.string "image"
     t.string "description"
     t.integer "price"
-    t.string "discount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
