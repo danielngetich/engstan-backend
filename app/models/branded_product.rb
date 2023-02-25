@@ -1,0 +1,2 @@
+class BrandedProduct < Product
+end
