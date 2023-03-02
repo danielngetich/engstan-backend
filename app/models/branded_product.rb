@@ -1,2 +1,0 @@
-class BrandedProduct < Product
-end
