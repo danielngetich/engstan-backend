@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   
     def create
       @product = Product.new(product_params)
+      @product.avatar.attach(params[:avatar])
       if @product.save
         render json: @product, status: :created
       else
@@ -36,7 +37,7 @@ class ProductsController < ApplicationController
     private
   
     def product_params
-      params.require(:product).permit(:productName, :type, :description, :price, :image)
+      params.require(:product).permit(:productName, :type, :description, :price, :avatar)
     end
 
  

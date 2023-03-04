@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  has_one_attached :image
+    has_one_attached :avatar
     mount_uploader :image, ImageUploader
     self.inheritance_column = :_type_disabled
     validates :productName, presence: true
