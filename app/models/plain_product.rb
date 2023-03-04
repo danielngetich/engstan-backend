@@ -1,2 +1,0 @@
-class PlainProduct < Product
-end

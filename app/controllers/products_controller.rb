@@ -1,51 +1,44 @@
 class ProductsController < ApplicationController
     def index
       @products = Product.all
-    end
-  
-    def show
-      @product = Product.find(params[:id])
-    end
-  
-    def new
-      @product = Product.new
+      render json: @products
     end
   
     def create
       @product = Product.new(product_params)
-  
       if @product.save
-        redirect_to product_path(@product)
+        render json: @product, status: :created
       else
-        render :new
+        render json: @product.errors, status: :unprocessable_entity
       end
     end
   
-    def edit
+    def show
       @product = Product.find(params[:id])
+      render json: @product
     end
   
     def update
       @product = Product.find(params[:id])
-  
       if @product.update(product_params)
-        redirect_to product_path(@product)
+        render json: @product
       else
-        render :edit
+        render json: @product.errors, status: :unprocessable_entity
       end
     end
   
     def destroy
       @product = Product.find(params[:id])
       @product.destroy
-  
-      redirect_to products_path
+      head :no_content
     end
   
     private
   
     def product_params
-      params.require(:product).permit(:name, :description, :price, :image)
+      params.require(:product).permit(:productName, :type, :description, :price, :image)
     end
-  end
+
+ 
   
+end
